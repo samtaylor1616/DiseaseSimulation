@@ -1,7 +1,3 @@
-## Synopsis
-
-2019 Sem 1 - FOP Assignment
-
 ## Usage - diseaseSim.py:
    1. Default values: python3 diseaseSim.py
    2. python3 diseaseSim.py <'V'/'M'> < POPULATION > < INFECTED > < COLS > < ROWS > 

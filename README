@@ -13,8 +13,6 @@
 
 
 ## Contents
-
-README              - readme file for assignment
 diseaseSim.py       - simulates the spread of disease though a population
 disease_sweep       - bash script using the disease simulation
 neighbourhood.py    - defines Moore and vonNeumann neighbourboods

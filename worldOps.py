@@ -50,43 +50,17 @@ def movePeeps(NUM_ROWS, NUM_COLS, world, cur, next, r, c):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~ START CELL FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~  #
 # NOTE: NEIGH_FUNC stores either the Moore or the Von Neumann function
 
-def kill(NEIGH_FUNC, num_rows, num_cols, inf, dead, r, c, prob):
+def modify(NEIGH_FUNC, num_rows, num_cols, inf, notinf, r, c, prob, modType):
     prob = prob * ( NEIGH_FUNC(inf, r, c, num_rows, num_cols).mean() )
-    kCount = 0
-    # If prob is not 0.0 
-    if prob:
-        for peep in range(inf[r,c]):
-            if random.random() < prob:
-                dead[r, c] +=1
-                inf[r, c] -=1
-                print("##### New dead cell (", r, ",", c, ")")
-                kCount += 1
-    return kCount
-
-def infect(NEIGH_FUNC, num_rows, num_cols, inf, notinf, r, c, prob):
-    prob = prob * ( NEIGH_FUNC(inf, r, c, num_rows, num_cols).mean() )
-    iCount = 0
-    # If prob is not 0.0 
-    if prob:
-        for peep in range(notinf[r,c]):
-            if random.random() < prob:
-                inf[r, c] +=1
-                notinf[r, c] -=1
-                print("***** New infection (", r, ",", c, ")")
-                iCount += 1
-    return iCount
-
-def heal(NEIGH_FUNC, num_rows, num_cols, inf, notinf, r, c, prob):
-    prob = prob * ( NEIGH_FUNC(inf, r, c, num_rows, num_cols).mean() )
-    hCount = 0
+    count = 0
     # If prob is not 0.0 
     if prob:
         for peep in range(inf[r,c]):
             if random.random() < prob:
                 inf[r, c] -=1
                 notinf[r, c] +=1
-                print("~~~~~ New antidote  (", r, ",", c, ")")
-                hCount += 1
-    return hCount
+                print( modType, " (", r, ",", c, ")")
+                count += 1
+    return count
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~ END CELL FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~  #

@@ -138,9 +138,9 @@ if valid:
         uninfected2 = np.zeros((NUM_ROWS, NUM_COLS), dtype=np.int)
         for row in range(NUM_ROWS):
             for col in range(NUM_COLS):
-                dead_count += kill(NEIGH_FUNC, NUM_ROWS, NUM_COLS, infected, dead, row, col, DIE_PROB)
-                infect_count += infect(NEIGH_FUNC, NUM_ROWS, NUM_COLS, infected, uninfected, row, col, INFECT_PROB)
-                antidote_count += heal(NEIGH_FUNC, NUM_ROWS, NUM_COLS, infected, uninfected, row, col, HEAL_PROB)
+                dead_count += modify(NEIGH_FUNC, NUM_ROWS, NUM_COLS, infected, dead, row, col, DIE_PROB, "##### New dead cell")
+                infect_count += modify(NEIGH_FUNC, NUM_ROWS, NUM_COLS, infected, uninfected, row, col, INFECT_PROB, "***** New infection")
+                antidote_count += modify(NEIGH_FUNC, NUM_ROWS, NUM_COLS, infected, uninfected, row, col, HEAL_PROB, "~~~~~ New antidote")
 
                 movePeeps(NUM_ROWS, NUM_COLS, world, infected, infected2, row, col)
                 movePeeps(NUM_ROWS, NUM_COLS, world, uninfected, uninfected2, row, col)
